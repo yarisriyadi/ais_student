@@ -12,98 +12,157 @@
     
     <style>
         * {
-            transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            background: var(--body-bg); 
+            background: transparent; 
+            color: #ffffff;
             overflow-x: hidden;
+            padding: 2px 5px;
         }
 
         .reg-container { 
-            background: var(--container-bg); 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px); 
-            padding: 40px; 
-            border-radius: 24px; 
-            border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow); 
-            width: 90%; 
-            max-width: 400px; 
-            box-sizing: border-box; 
-            position: relative; 
-            z-index: 1; 
-            margin: 40px 0;
+            width: 100%;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .reg-container h2 { 
-            text-align: center; 
-            margin: 0 0 30px 0; 
-            font-size: 28px; 
-            font-weight: 800; 
-            color: var(--text-color);
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
+        .reg-container h2, 
+        .reg-container .login-link, 
+        .reg-container .copyright { 
+            display: none; 
         }
 
         .form-group {
-            margin-bottom: 20px; 
+            margin-bottom: 18px; 
+            text-align: left;
+            position: relative;
         }
 
         .form-group label { 
             display: block; 
-            margin-bottom: 10px; 
-            font-size: 14px; 
+            margin-bottom: 8px; 
+            font-size: 13px; 
             font-weight: 600; 
-            color: var(--text-color);
+            color: var(--text-color, #ffffff);
+            letter-spacing: 0.3px;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input-box i.field-icon {
+            position: absolute;
+            left: 16px;
+            color: #64748b;
+            font-size: 16px;
+            z-index: 5;
+            pointer-events: none; 
         }
 
         .form-group input { 
             width: 100%; 
-            padding: 14px; 
-            border: 1px solid var(--border-color); 
+            padding: 13px 16px 13px 46px; 
+            border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1)); 
             border-radius: 12px; 
             box-sizing: border-box; 
-            font-size: 15px; 
-            background: var(--input-bg); 
-            color: var(--text-color); 
+            font-size: 14px; 
+            background: var(--input-bg, #1e293b); 
+            color: #ffffff; 
             outline: none;
         }
 
         .form-group input:focus {
-            border-color: #28a745;
+            border-color: #4361ee;
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
         }
 
-        .btn-reg { 
+        .form-group input:focus + i.field-icon {
+            color: #4361ee;
+        }
+
+        .password-container { 
+            position: relative; 
+            display: flex;
+            align-items: center;
             width: 100%; 
-            padding: 16px; 
-            background-image: linear-gradient(90deg, #28a745, #2ecc71, #28a745);
-            background-size: 200% 100%;
-            border: none; 
-            color: white; 
-            border-radius: 12px; 
-            cursor: pointer; 
-            font-size: 16px; 
-            font-weight: 700; 
-            margin-top: 15px; 
-            text-transform: uppercase; 
-            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
         }
 
-        .btn-reg:hover { 
-            transform: translateY(-3px);
-            animation: auroraMove 2s linear infinite;
-            box-shadow: 0 12px 25px rgba(46, 204, 113, 0.4);
+        .toggle-password { 
+            position: absolute; 
+            right: 16px; 
+            cursor: pointer; 
+            color: #64748b; 
+            font-size: 16px; 
+            z-index: 10; 
+            padding: 4px;
+        }
+
+        .toggle-password:hover {
+            color: #ffffff;
+        }
+
+        .msg-error { 
+            font-size: 11.5px; 
+            margin-top: 6px; 
+            font-weight: 600; 
+            color: #ff4d4d; 
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .msg-success { 
+            font-size: 11.5px; 
+            margin-top: 6px; 
+            font-weight: 600; 
+            color: #2ecc71; 
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+.btn-reg { 
+    width: 100%; 
+    padding: 14px; 
+    background-image: linear-gradient(90deg, #4cc9f0, #4361ee, #4cc9f0);
+    background-size: 200% 100%;
+    border: none; 
+    color: white; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    font-weight: 700; 
+    margin-top: 12px; 
+    margin-bottom: 5px;
+    text-transform: uppercase; 
+    box-shadow: none; /* DIUBAH KESINI */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn-reg:hover { 
+    transform: translateY(-2px);
+    animation: auroraMove 2s linear infinite;
+    box-shadow: none; 
+}
+
+        .btn-reg:active {
+            transform: translateY(0);
         }
 
         @keyframes auroraMove {
@@ -111,72 +170,17 @@
             100% { background-position: 200% 50%; }
         }
 
-        .login-link { 
-            text-align: center; 
-            margin-top: 25px; 
-            font-size: 14px; 
-            color: var(--text-muted);
-        }
-                                              
-        .login-link a { 
-            color: #4361ee !important;
-
-            text-decoration: none; 
-            font-weight: 700; 
-        }
-
-        .login-link a:hover { 
-            text-decoration: underline; 
-        }
-
-        .copyright { 
-            text-align: center; 
-            margin-top: 30px; 
-            font-size: 11px; 
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color); 
-            padding-top: 15px; 
-        }
-
-        .password-container { 
-            position: relative; 
-            width: 100%; 
-        }
-
-        .toggle-password { 
-            position: absolute; 
-            right: 15px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            cursor: pointer; 
-            color: var(--text-muted); 
-            font-size: 18px; 
-            z-index: 10; 
-        }
-
-        .msg-error { 
-            font-size: 11px; 
-            margin-top: 6px; 
-            font-weight: 700; 
-            color: #ff4d4d; 
-        }
-
-        .msg-success { 
-            font-size: 11px; 
-            margin-top: 6px; 
-            font-weight: 700; 
-            color: #2ecc71; 
-        }
-
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--body-bg); }
-        ::-webkit-scrollbar-thumb { background: #555; border-radius: 10px; }
+        /* Kustomisasi scrollbar internal iframe biar rapi */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
         
         .swal2-popup {
-            background: var(--container-bg) !important;
-            color: var(--text-color) !important;
+            background: #1e293b !important;
+            color: #ffffff !important;
             border-radius: 20px !important;
-            border: 1px solid var(--border-color) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
     </style>
 </head>
@@ -189,31 +193,41 @@
             
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" name="username" id="username" required autocomplete="off" placeholder="Username"
-                oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
-                oninput="this.setCustomValidity('')">
+                <div class="input-box">
+                    <i class="fa-solid fa-at field-icon"></i>
+                    <input type="text" name="username" id="username" required autocomplete="off" placeholder="Username"
+                    oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
+                    oninput="this.setCustomValidity('')">
+                </div>
                 <div id="user-message"></div>
             </div>
             
             <div class="form-group">
                 <label>Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" id="nama_lengkap" required placeholder="Nama Sesuai ID Card"
-                oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
-                oninput="this.setCustomValidity('')">
+                <div class="input-box">
+                    <i class="fa-solid fa-id-card field-icon"></i>
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" required placeholder="Nama Lengkap"
+                    oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
+                    oninput="this.setCustomValidity('')">
+                </div>
                 <div id="name-message"></div>
             </div>
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" id="email" required placeholder="Masukan Email Aktif" autocomplete="off"
-                oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
-                oninput="this.setCustomValidity('')">
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope field-icon"></i>
+                    <input type="email" name="email" id="email" required placeholder="Masukan Email Aktif" autocomplete="off"
+                    oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
+                    oninput="this.setCustomValidity('')">
+                </div>
                 <div id="email-message"></div> 
             </div>
             
             <div class="form-group">
                 <label>Password</label>
-                <div class="password-container">
+                <div class="input-box password-container">
+                    <i class="fa-solid fa-lock field-icon"></i>
                     <input type="password" name="password" id="password" required placeholder="Masukan Password"
                     oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
                     oninput="this.setCustomValidity('')">
@@ -224,7 +238,8 @@
 
             <div class="form-group">
                 <label>Konfirmasi Password</label>
-                <div class="password-container">
+                <div class="input-box password-container">
+                    <i class="fa-solid fa-shield-halved field-icon"></i>
                     <input type="password" name="confirm_password" id="confirm_password" required placeholder="Ulangi password"
                     oninvalid="this.setCustomValidity('Tidak boleh kosong!')"
                     oninput="this.setCustomValidity('')">
@@ -353,7 +368,7 @@
                 title: 'DATA BELUM VALID',
                 text: 'Harap periksa kembali semua kolom inputan Anda.',
                 icon: 'error',
-                confirmButtonColor: '#28a745'
+                confirmButtonColor: '#4361ee'
             });
             return false;
         }
@@ -364,7 +379,7 @@
             icon: 'question',
             showCancelButton: true,
             reverseButtons: true,
-            confirmButtonColor: '#28a745',
+            confirmButtonColor: '#4361ee',
             cancelButtonColor: '#6c757d',
             confirmButtonText: 'YA, DAFTAR',
             cancelButtonText: 'BATAL'
