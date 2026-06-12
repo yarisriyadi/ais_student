@@ -452,7 +452,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
                             <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword"></i>
                         </div>
                     </div>
-                    <button type="submit" class="btn-login" <?php echo $is_locked ? 'disabled' : ''; ?>>MASUK</button>
+                    <button type="submit" class="btn-login" <?php echo $is_locked ? 'disabled' : ''; ?>>LOGIN</button>
                 </form>
 
                 <div class="mobile-footer">
@@ -471,7 +471,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
                 <iframe src="register.php" style="width:100%; height:340px; border:none; background:transparent;"></iframe>
                 
                 <div class="mobile-footer">
-                    Sudah punya akun? <a href="#" id="toLoginMobile">Masuk</a>
+                    Sudah punya akun? <a href="#" id="toLoginMobile">LOGIN</a>
                 </div>
                 
                 <div class="copyright">&copy; 2026 Ais Student.</div>
@@ -483,11 +483,11 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == "login") {
                 <div class="overlay-panel overlay-left">
                     <h1>Sudah Punya Akun?</h1>
                     <p>Silakan masuk kembali menggunakan akun Anda yang sudah terdaftar.</p>
-                    <button class="btn-ghost" id="toLogin">MASUK</button>
+                    <button class="btn-ghost" id="toLogin">LOGIN</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Halo, Teman!</h1>
-                    <p>Isi detail data diri Anda dan mulailah perjalanan akademik bersama kami.</p>
+                    <p>Isi data diri Anda dan mulailah perjalanan akademik bersama kami.</p>
                     <button class="btn-ghost" id="toRegister">REGISTRASI</button>
                 </div>
             </div>
